@@ -1,6 +1,7 @@
 package com.TessConversor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Length {
@@ -64,5 +65,27 @@ public class Length {
 			return result;
 		}
 		return 0;
+	}
+
+	public static String[] getValores() {
+		ArrayList<Length> lengths = genereteLength();
+		List<String> opciones = new ArrayList<>();
+
+		for (Length length : lengths) {
+			opciones.add(length.getName());
+		}
+		String[] opcionesArray = opciones.toArray(new String[0]);
+		return opcionesArray;
+	}
+
+	public static int buscarPosition(String buscar) {
+		double position = -1;
+		for (Length lengthObj : genereteLength()) {
+			if (lengthObj.getName().equals(buscar)) {
+				position = lengthObj.getPosition();
+				break;// Terminamos la búsqueda al encontrar la coincidencia
+			}
+		}
+		return (int) position;
 	}
 }
