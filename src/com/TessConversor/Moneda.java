@@ -80,12 +80,25 @@ public class Moneda {
 	public static String[] getValores() {
 		ArrayList<Moneda> monedas = cpoToOther();
 		List<String> opciones = new ArrayList<>();
-		
+
 		for (Moneda moneda : monedas) {
 			opciones.add(moneda.getMoneda());
 		}
-		
+
 		String[] opcionesArray = opciones.toArray(new String[0]);
 		return opcionesArray;
 	}
+
+	public static int guardarPosition(String buscar) {
+	    double position = -1;
+		for (Moneda monedaObj : cpoToOther()) {
+			if (monedaObj.getMoneda().equals(buscar)) {
+				position = monedaObj.getPosition();
+				break; // Terminamos la búsqueda al encontrar la coincidencia
+			}
+		}
+		return (int) position;
+
+	}
+
 }

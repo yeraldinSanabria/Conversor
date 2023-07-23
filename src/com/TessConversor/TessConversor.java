@@ -10,6 +10,7 @@ public class TessConversor extends JFrame {
 
 	private JTextField textField;
 	private JComboBox<String> comboBox;
+	private double valorCalculado;
 
 	public TessConversor() {
 		// Configuración de la ventana
@@ -63,24 +64,29 @@ public class TessConversor extends JFrame {
 		String[] opciones = Moneda.getValores();
 		comboBox = new JComboBox<>(opciones);
 
-		//AGREGAR A PANEL
+		// AGREGAR A PANEL
 		panel.add(comboBox);
 		panel.add(textField);
 
 		// BOTON DE CALCULAR
 		JButton btnCalcular = new JButton("Calcular");
 		panel.add(btnCalcular);
-		
-		btnCalcular.addActionListener(e->{
+
+		btnCalcular.addActionListener(e -> {
 			// Obtenemos el valor seleccionado del JComboBox
-            String monedaSeleccionada = (String) comboBox.getSelectedItem();
-            System.out.println(monedaSeleccionada);
-            
-            String ValorSeleccionado = (String)  textField.getText();
-            System.out.println(ValorSeleccionado);
+			String monedaSeleccionada = (String) comboBox.getSelectedItem();
+			String ValorSeleccionado = (String) textField.getText();
+			valorCalculado = Moneda.calculateValue(Moneda.guardarPosition(monedaSeleccionada),
+					Double.parseDouble(ValorSeleccionado));
+			System.out.println(valorCalculado);
+			
+			JLabel label = new JLabel( "El resultado de la conversión es el siguiente "+ String.valueOf(valorCalculado));
+			label.setBounds(50, 50, 200, 30);
+			panel.add(label);
+			panel.revalidate();
+			panel.repaint();
 		});
-		
-		
+
 		// ACTUALUZAR PANEL
 		panel.revalidate();
 		panel.repaint();
