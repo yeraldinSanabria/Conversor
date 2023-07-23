@@ -14,7 +14,7 @@ public class TessConversor extends JFrame {
 	private JButton btnCalcular;
 	private JLabel label;
 	private JPanel panel;
-	
+
 	private JPanel panel1;
 	private JLabel label1;
 	private JButton btnCalcular1;
@@ -51,7 +51,7 @@ public class TessConversor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				eliminarElementos(2);
 				monedaAccion();
-				
+
 			}
 		});
 
@@ -60,7 +60,7 @@ public class TessConversor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				eliminarElementos(1);
 				lengthAccion();
-				
+
 			}
 		});
 
@@ -94,20 +94,27 @@ public class TessConversor extends JFrame {
 		panel.add(btnCalcular);
 
 		btnCalcular.addActionListener(e -> {
-			eliminarElementos(3);
-			// valor selecionado es igual al valor que selecciona el usuario del combobox
-			String monedaSeleccionada = (String) comboBox.getSelectedItem();
-			// valor que digita el usuario
-			String ValorSeleccionado = (String) textField.getText();
-			// calcula el valor segun la seleccion y el valor digitado
-			valorCalculado = Moneda.calculateValue(Moneda.guardarPosition(monedaSeleccionada),
-					Double.parseDouble(ValorSeleccionado));
+			try {
+				eliminarElementos(3);
+				// valor selecionado es igual al valor que selecciona el usuario del combobox
+				String monedaSeleccionada = (String) comboBox.getSelectedItem();
+				// valor que digita el usuario
+				double ValorSeleccionado = Double.parseDouble(textField.getText());
+				System.out.println("---> " + ValorSeleccionado);
 
-			label = new JLabel("El resultado de la conversión es el siguiente " + String.valueOf(valorCalculado));
-			label.setBounds(50, 50, 200, 30);
-			panel.add(label);
-			panel.revalidate();
-			panel.repaint();
+				// calcula el valor segun la seleccion y el valor digitado
+				valorCalculado = Moneda.calculateValue(Moneda.guardarPosition(monedaSeleccionada),ValorSeleccionado);
+
+				label = new JLabel("El resultado de la conversión es el siguiente " + String.valueOf(valorCalculado));
+				label.setBounds(50, 50, 200, 30);
+				panel.add(label);
+				panel.revalidate();
+				panel.repaint();
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(null, "Ingrese solo valores númericos");
+				
+			}
+			
 		});
 
 		// ACTUALUZAR PANEL
@@ -156,7 +163,7 @@ public class TessConversor extends JFrame {
 			panel.revalidate();
 			panel.repaint();
 		}
-		
+
 		if (elemento == 3) {
 			if (panel.getComponentCount() > 0 && panel.isAncestorOf(label)) {
 				panel.remove(label);
