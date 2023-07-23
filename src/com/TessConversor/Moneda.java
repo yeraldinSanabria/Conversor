@@ -1,6 +1,7 @@
 package com.TessConversor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Moneda {
@@ -36,7 +37,7 @@ public class Moneda {
 		valores.add(new Moneda(5, "Convertir de Pesos a Won Soul - Coreano ", 3.16));
 		valores.add(new Moneda(6, "Convertir de Dolares a Pesos", 4004));
 		valores.add(new Moneda(7, "Convertir de Euros a Pesos", 4430));
-		valores.add(new Moneda(8, "Convertir de Libras Esterlinas a Pesos",  5159));
+		valores.add(new Moneda(8, "Convertir de Libras Esterlinas a Pesos", 5159));
 		valores.add(new Moneda(9, "Convertir de Yen Japones a Pesos", 28.65));
 		valores.add(new Moneda(10, "Convertir de Won Soul - Coreano a Pesos ", 3.16));
 		return valores;
@@ -74,6 +75,17 @@ public class Moneda {
 			return result;
 		}
 		return 0;
+	}
 
+	public static String[] getValores() {
+		ArrayList<Moneda> monedas = cpoToOther();
+		List<String> opciones = new ArrayList<>();
+		
+		for (Moneda moneda : monedas) {
+			opciones.add(moneda.getMoneda());
+		}
+		
+		String[] opcionesArray = opciones.toArray(new String[0]);
+		return opcionesArray;
 	}
 }
