@@ -22,7 +22,7 @@ Convertidor es un programa Java diseñado para realizar conversiones de monedas 
 
 ![Captura de pantalla 1](Screenshot_6.png)
 
- El programa también admite conversiones entre diferentes unidades de medida, como longitud, peso, temperatura, etc. Los usuarios pueden ingresar un valor en una unidad y obtener su equivalente en otra unidad de medida seleccionada.
+ El programa también admite conversiones de  unidades de medida, longitud y obtener su equivalente en otra unidad de medida seleccionada.
 ![Captura de pantalla 1](Screenshot_7.png)
 ![Captura de pantalla 1](Screenshot_8.png)
 ![Captura de pantalla 1](Screenshot_9.png)
