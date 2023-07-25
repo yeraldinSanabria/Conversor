@@ -67,9 +67,17 @@ public class TessConversor extends JFrame {
 		btnsalir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Esta saliendo del programa");
-				System.exit(0);
+				int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea salir ?", "Confirmación",
+						JOptionPane.YES_NO_OPTION);
+
+				if (opcion == JOptionPane.YES_NO_OPTION) {
+					JOptionPane.showMessageDialog(null, "Esta saliendo del programa");
+					System.exit(0);
+				} else if (opcion == JOptionPane.NO_OPTION) {
+					System.out.println("Acción cancelada.");
+				}
 			}
+
 		});
 
 		// SE AGREGA PANEL A VENTANA
@@ -103,7 +111,7 @@ public class TessConversor extends JFrame {
 				System.out.println("---> " + ValorSeleccionado);
 
 				// calcula el valor segun la seleccion y el valor digitado
-				valorCalculado = Moneda.calculateValue(Moneda.guardarPosition(monedaSeleccionada),ValorSeleccionado);
+				valorCalculado = Moneda.calculateValue(Moneda.guardarPosition(monedaSeleccionada), ValorSeleccionado);
 
 				label = new JLabel("El resultado de la conversión es el siguiente " + String.valueOf(valorCalculado));
 				label.setBounds(50, 50, 200, 30);
@@ -112,9 +120,9 @@ public class TessConversor extends JFrame {
 				panel.repaint();
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null, "Ingrese solo valores númericos");
-				
+
 			}
-			
+
 		});
 
 		// ACTUALUZAR PANEL
